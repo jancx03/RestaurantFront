@@ -1,22 +1,14 @@
-import {defineConfig} from 'vite';
-
+/* eslint-disable import/no-extraneous-dependencies */
+import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
-
 import path from 'path';
 
-
-// https://vitejs.dev/config/
-
 export default defineConfig({
-
   plugins: [vue()],
-  // alias: {
-  //   '/@/': './src',
-  // },
   resolve: {
     alias: [
       {
-        find: 'src',
+        find: '@',
         replacement: path.resolve(__dirname, './src'),
       },
       {
@@ -32,6 +24,4 @@ export default defineConfig({
   optimizeDeps: {
     include: ['lodash'],
   },
-
 });
-
