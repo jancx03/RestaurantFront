@@ -1,17 +1,16 @@
 <template>
-  <section v-for="item in items">
-    <h1>{{ item }}</h1>
+  <section>
+    <h1 v-for="item in items" :key="item">{{ item }}</h1>
   </section>
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters } from 'vuex';
 
 export default {
-    computed(){
-        ...mapGetters(['items']),
-        
-    }
+  computed: {
+    ...mapGetters(['items']),
+  },
 };
 </script>
 
