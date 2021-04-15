@@ -1,24 +1,17 @@
 <template>
-  <section>
-    <h2>{{ charname }}</h2>
-    <h3>{{ charage }} Years</h3>
-    <h3>{{ charpower }} Years</h3>
+  <section v-for="item in items">
+    <h1>{{ item }}</h1>
   </section>
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 export default {
-  props: {
-    username: {
-      type: String,
-    },
-    userage: {
-      type: String,
-    },
-    usermail: {
-      type: String,
-    },
-  },
+    computed(){
+        ...mapGetters(['items']),
+        
+    }
 };
 </script>
 
