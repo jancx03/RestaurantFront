@@ -18,9 +18,9 @@
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-vue": "^7.9.0",
+    "path": "^0.12.7",
     "postcss": "^8.2.10",
     "tailwindcss": "^2.1.1",
-    "vite": "^2.1.5",
-    "path": "^0.12.7"
+    "vite": "^2.1.5"
   }
 }
