@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import axios from 'axios';
+import { API } from 'amplify';
 
 export default {
   data() {
@@ -23,13 +23,29 @@ export default {
     };
   },
   async mounted() {
+    // try {
+    //   axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
+    //   const restaurants = await axios.get('http://18.218.170.33/restaurants');
+    //   this.restaurants = restaurants.data;
+    //   this.ready = true;
+    // } catch (err) {
+    //   this.error = err;
+    // }
+    const apiName = 'API';
+    const path = 'http://18.218.170.33/restaurants';
+    const myInit = {
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+      },
+      response: true,
+    };
+
     try {
-      axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
-      const restaurants = await axios.get('http://18.218.170.33/restaurants');
-      this.restaurants = restaurants.data;
+      const response = await API.get(apiName, path, myInit);
+      this.restaurants = response.data;
       this.ready = true;
     } catch (err) {
-      this.error = err;
+      this.error = err.response;
     }
   },
 };
