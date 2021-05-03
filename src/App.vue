@@ -4,11 +4,16 @@
 </template>
 
 <script>
-import TheInputbar from "components/TheInputBar.vue";
-import Test from "./components/test.vue";
+import TheInputbar from 'components/TheInputBar.vue';
+import Test from './components/test.vue';
 
 export default {
   components: { TheInputbar, Test },
+  data() {
+    return {
+      name: 'cool',
+    };
+  },
 };
 </script>
 
