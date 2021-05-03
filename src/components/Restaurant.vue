@@ -12,8 +12,6 @@
 </template>
 
 <script>
-import { API } from 'amplify';
-
 export default {
   data() {
     return {
@@ -23,29 +21,22 @@ export default {
     };
   },
   async mounted() {
-    // try {
-    //   axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
-    //   const restaurants = await axios.get('http://18.218.170.33/restaurants');
-    //   this.restaurants = restaurants.data;
-    //   this.ready = true;
-    // } catch (err) {
-    //   this.error = err;
-    // }
-    const apiName = 'API';
-    const path = 'http://18.218.170.33/restaurants';
-    const myInit = {
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-      },
-      response: true,
-    };
-
     try {
-      const response = await API.get(apiName, path, myInit);
-      this.restaurants = response.data;
+      // axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
+      const response = await fetch('http://18.218.170.33/restaurants', {
+        Headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*',
+        },
+      });
+      const result = response.json();
+      const restaurants = await result;
+      this.restaurants = restaurants;
       this.ready = true;
+      return 0;
     } catch (err) {
-      this.error = err.response;
+      this.error = err;
+      return 1;
     }
   },
 };
