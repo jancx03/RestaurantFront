@@ -1,14 +1,16 @@
 <template>
+  <Restaurant />
   <TheInputbar />
   <Test />
 </template>
 
 <script>
-import TheInputbar from "components/TheInputBar.vue";
-import Test from "./components/test.vue";
+import TheInputbar from 'components/TheInputBar.vue';
+import Test from './components/test.vue';
+import Restaurant from './components/Restaurant.vue';
 
 export default {
-  components: { TheInputbar, Test },
+  components: { TheInputbar, Test, Restaurant },
 };
 </script>
 
