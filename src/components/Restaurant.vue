@@ -23,7 +23,7 @@ export default {
   async mounted() {
     try {
       // axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
-      const response = await fetch('http://18.218.170.33/restaurants', {
+      const response = await fetch('https://d1o8lt9womy1vs.cloudfront.net/restaurants', {
         Headers: {
           'Content-Type': 'application/json',
           'Access-Control-Allow-Origin': '*',
