@@ -1,23 +1,22 @@
 <template>
-  <form action="">
-  <div class="flex justify-center pt-14 pr-20 pb-13">
-    <div>
-      <span class="mr-12 text-gray-600">Find</span>
-      <span class="">
-        <input type="text" placeholder="restaurants" class="font-normal" />
-      </span>
+  <form>
+    <div class="flex justify-center w-full">
+      <div class="">
+        <div class="pt-14 ">
+          <label> Find </label>
+           <input class="" />
+        </div>
+      </div>
+      <div class="pt-14">
+        <div>
+          <label> Near </label>
+           <input class="" />
+        </div>
+      </div>
+      <!-- <div class="pt-14 pl-20 pb-13 shadow-none ">
+        <button class="bg-red-700 rounded-sm">Search</button>
+      </div> -->
     </div>
-    <div class="font-medium">
-      <label for="near" >Near</label>
-      <input
-        type="text"
-        placeholder="address, neighborhood, city, state or zip"
-      />
-    </div>
-    <div class="">
-      <button class="bg-red-700" >search</button>
-    </div>
-  </div>
   </form>
 </template>
 
