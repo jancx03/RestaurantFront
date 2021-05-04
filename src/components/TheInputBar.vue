@@ -2,20 +2,23 @@
   <form>
     <div class="flex justify-center w-full">
       <div class="">
-        <div class="pt-14 ">
+        <div class="pt-14">
           <label> Find </label>
-           <input class="" />
+          <input class="max-w-full h-8 pl-20" />
         </div>
       </div>
       <div class="pt-14">
-        <div>
+        <div class="text-left">
           <label> Near </label>
-           <input class="" />
+          <input
+            placeholder="address, neighborhood,city,state or zip"
+            class="text-left max-w-full h-8 pl-20"
+          />
         </div>
       </div>
-      <!-- <div class="pt-14 pl-20 pb-13 shadow-none ">
-        <button class="bg-red-700 rounded-sm">Search</button>
-      </div> -->
+      <div class="pt-14 pb-13 shadow-none">
+        <button class="bg-red-700 rounded-sm h-8">Search</button>
+      </div>
     </div>
   </form>
 </template>
