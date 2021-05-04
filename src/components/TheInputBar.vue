@@ -1,5 +1,5 @@
 <template>
-<input type="text" placeholder="coool">
+<div class="bg-blue-500">This is checking</div>
 </template>
 
 <script>
