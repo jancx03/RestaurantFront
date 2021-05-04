@@ -1,13 +1,13 @@
 <template>
   <!-- <Restaurants /> -->
-  <Bar/>
+  <TheSearchBar />
 </template>
 
 <script>
 // import Restaurants from 'components/Restaurant.vue';
-import Bar from 'components/TheInputBar.vue';
+import TheSearchBar from 'components/TheInputBar.vue';
 
 export default {
-  components: { Bar },
+  components: { TheSearchBar },
 };
 </script>
