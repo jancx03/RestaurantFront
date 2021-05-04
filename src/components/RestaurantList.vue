@@ -9,10 +9,15 @@
           <p class="title">{{restaurant.name}}</p>
           <i v-for="star in restaurant.star_rate" :key="star" class="fas fa-star fill"></i>
           <i v-for="star in 5 - restaurant.star_rate" :key="star" class="fas fa-star unfill"></i>
-          <p class="normal"><span>{{restaurant.cost}}</span><span>{{restaurant.type}}</span></p>
+          <p class="normal">
+            <span>{{restaurant.cost}}</span>
+            <span class="dot">&middot;</span>
+            <span>{{restaurant.type}}</span></p>
           <p class="normal">
             <span>{{restaurant.reserve}}</span>
+            <span>Reserve</span>
             <span>{{restaurant.kid_friendly}}</span>
+            <span>Kid Friendly</span>
           </p>
         </div>
         <div class="info">
@@ -27,6 +32,22 @@
 <script lang="ts">
 export default {
   props: ['restaurants'],
+  methods: {
+    boolParseString(/* string */ value) {
+      let result = false;
+
+      switch (value) {
+        case 'Yes':
+          result = true;
+          break;
+        default:
+          result = false;
+          break;
+      }
+
+      return /* boolean */ result;
+    },
+  },
 };
 </script>
 
@@ -96,5 +117,10 @@ img {
   padding: .3rem;
   margin-right: .2rem;
   border-radius: .4rem;
+}
+
+.dot {
+  font-weight: bold;
+  margin: 0 .5rem;
 }
 </style>
