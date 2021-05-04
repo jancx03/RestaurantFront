@@ -6,13 +6,23 @@
           <img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=967&q=80" alt="restaurant_image">
         </div>
         <div class="main">
-          <p class="title">{{restaurant.name}}</p>
+          <p class="title">{{restaurant.restaurant}}</p>
           <i v-for="star in restaurant.star_rate" :key="star" class="fas fa-star fill"></i>
           <i v-for="star in 5 - restaurant.star_rate" :key="star" class="fas fa-star unfill"></i>
-          <p class="normal"><span>{{restaurant.cost}}</span><span>{{restaurant.type}}</span></p>
           <p class="normal">
-            <span>{{restaurant.reserve}}</span>
-            <span>{{restaurant.kid_friendly}}</span>
+            <span>{{restaurant.cost}}</span>
+            <span class="dot">&middot;</span>
+            <span>{{restaurant.type}}</span></p>
+          <p class="normal">
+            <span class="check" v-if="sToB(restaurant.reserve)"><i class="fas fa-check"></i></span>
+            <span class="close" v-else><i class="fas fa-times"></i></span>
+            <span class="feature">Reserve</span>
+            <span class="check"
+              v-if="sToB(restaurant.kid_friendly)">
+              <i class="fas fa-check"></i>
+            </span>
+            <span v-else><i class="fas fa-times"></i></span>
+            <span class="feature">Kid Friendly</span>
           </p>
         </div>
         <div class="info">
@@ -24,15 +34,33 @@
   </ul>
 </template>
 
-<script lang="ts">
+<script>
 export default {
   props: ['restaurants'],
+  methods: {
+    /** Convert string no or yes to boolean */
+    sToB(/* string */ value) {
+      let result = false;
+
+      switch (value) {
+        case 'Yes':
+          result = true;
+          break;
+        default:
+          result = false;
+          break;
+      }
+
+      return /* boolean */ result;
+    },
+  },
 };
 </script>
 
 <style scoped>
 img {
-  width: 10rem;
+  width: 9rem;
+  height: 9rem;
   border-radius: .2rem;
 }
 
@@ -96,5 +124,24 @@ img {
   padding: .3rem;
   margin-right: .2rem;
   border-radius: .4rem;
+}
+
+.dot {
+  font-weight: bold;
+  margin: 0 .5rem;
+}
+
+.check {
+  color: green;
+  font-weight: 200;
+}
+
+.close {
+  color: black;
+  font-weight: 200;
+}
+
+.feature {
+  margin: 0 .7rem;
 }
 </style>
