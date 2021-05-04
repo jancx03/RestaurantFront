@@ -1,5 +1,8 @@
 /* eslint-disable no-shadow */
 import { createStore } from 'vuex';
+import restaurantStore from './restaurant.js';
+
+const modules = { restaurantStore };
 
 const state = () => ({
   items: [],
@@ -16,6 +19,7 @@ const mutations = {
 };
 
 export default createStore({
+  modules,
   state,
   getters,
   actions,
