@@ -1,11 +1,13 @@
 <template>
-  <Restaurants />
+  <!-- <Restaurants /> -->
+  <Bar/>
 </template>
 
 <script>
-import Restaurants from 'components/Restaurant.vue';
+// import Restaurants from 'components/Restaurant.vue';
+import Bar from 'components/TheInputBar.vue';
 
 export default {
-  components: { Restaurants },
+  components: { Bar },
 };
 </script>
