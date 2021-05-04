@@ -1,6 +1,7 @@
 <template>
   <div class="container" align="center">
     <input v-model="item" @keyup.enter="submit" type="text" placeholder="Hey! type here...">
+    <input type="text" name="" id="">
     <button @click="submit" @mousedown.prevent>Add</button>
   </div>
 </template>
