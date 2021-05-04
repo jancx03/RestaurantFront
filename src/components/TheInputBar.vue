@@ -1,18 +1,19 @@
 <template>
   <form>
-    <div class="flex justify-center w-full">
-      <div class="">
-        <div class="pt-14">
-          <label> Find </label>
-          <input class="max-w-full h-8 pl-20" />
+    <!-- <div class="flex justify-center w-full"> -->
+    <div>
+      <div class="pt-12">
+        <div class="pt-12 pl-6">
+          <label class="text-gray-500 font-semibold"> Find </label>
+          <input class="max-w-full h-8 pl-2"  placeholder="italian, mexican, chinese..."/>
         </div>
       </div>
       <div class="pt-14">
         <div class="text-left">
-          <label> Near </label>
+          <label class="text-gray-500 font-semibold"> Near </label>
           <input
             placeholder="address, neighborhood,city,state or zip"
-            class="text-left max-w-full h-8 pl-20"
+            class="text-left max-w-full h-8 pl-2"
           />
         </div>
       </div>
@@ -43,4 +44,14 @@ export default {
 </script>
 
 <style>
+input {
+  width: 40%;
+  display: inline-block;
+}
+
+div {
+  display: inline;
+  /* padding-top: 1rem; */
+}
+
 </style>
