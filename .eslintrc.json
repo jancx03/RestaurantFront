@@ -18,6 +18,9 @@
         "vue/no-multiple-template-root": 0,
         "import/no-unresolved": 0,
         "import/extensions": 0,
-        "quotes": ["error", "single"]
+        "quotes": ["error", "single"],
+        "no-param-reassign": 0,
+        "no-return-assign": 0,
+        "no-shadow": 0
     }
 }
