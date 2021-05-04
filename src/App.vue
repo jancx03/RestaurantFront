@@ -1,4 +1,5 @@
 <template>
+  <Restaurant />
   <TheInputbar />
   <Test />
 </template>
@@ -6,14 +7,10 @@
 <script>
 import TheInputbar from 'components/TheInputBar.vue';
 import Test from './components/test.vue';
+import Restaurant from './components/Restaurant.vue';
 
 export default {
-  components: { TheInputbar, Test },
-  data() {
-    return {
-      name: 'cool',
-    };
-  },
+  components: { TheInputbar, Test, Restaurant },
 };
 </script>
 
