@@ -31,7 +31,7 @@ const actions = {
       });
       const result = response.json();
       const restaurants = await result;
-      context.commit('restaurants', restaurants);
+      context.commit('setRestaurants', restaurants);
       return 0;
     } catch (err) {
       context.commit('error', err);
