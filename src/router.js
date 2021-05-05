@@ -1,10 +1,13 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import RestaurantsIndex from '@/pages/RestaurantsIndex.vue';
+import TheIndex from '@/pages/TheIndex.vue';
+import RestaurantList from '@/pages/RestaurantLists';
+import NotFound from '@/pages/NotFound.vue';
 
 export default createRouter({
   history: createWebHistory(),
   routes: [
-    { name: 'index', path: '/', redirect: '/restaurants' },
-    { name: 'restaurants', path: '/restaurants', component: RestaurantsIndex },
+    { name: 'index', path: '/', component: TheIndex },
+    { name: 'restaurants', path: '/restaurants', component: RestaurantList },
+    { name: 'catch', path: '/:catch-all', component: NotFound },
   ],
 });
