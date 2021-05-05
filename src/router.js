@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import TheIndex from '@/pages/TheIndex.vue';
-import RestaurantList from '@/pages/RestaurantLists';
+import RestaurantList from '@/pages/RestaurantList.vue';
 import NotFound from '@/pages/NotFound.vue';
 
 export default createRouter({
