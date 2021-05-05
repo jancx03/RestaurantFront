@@ -1,16 +1,16 @@
 <template>
   <TheSearchBar />
-  <RestaurantList :restaurants="restaurants"/>
+  <!-- <RestaurantList :restaurants="restaurants"/> -->
 </template>
 
 <script>
 // import Restaurants from 'components/Restaurant.vue';
 import TheSearchBar from 'components/TheInputBar.vue';
-import RestaurantList from 'components/RestaurantList.vue';
+// import RestaurantList from 'components/RestaurantList.vue';
 import { mapActions, mapGetters } from 'vuex';
 
 export default {
-  components: { TheSearchBar, RestaurantList },
+  components: { TheSearchBar },
   // data() {
   //   return {
   //     restaurants: [{
