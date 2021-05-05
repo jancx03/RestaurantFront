@@ -20,8 +20,8 @@
         placeholder="addess, neighborhood, city, state or zip"
       />
     </p>
-    <div class="button is-medium search-button">
-      <span class="icon is-small"><i class="fas fa-search"></i></span>
+    <div id="red" class="button is-medium search-button">
+      <span id="white" class="icon is-small"><i class="fas fa-search"></i></span>
     </div>
   </div>
 </template>
@@ -50,12 +50,15 @@ export default {
   min-width: 320px;
 }
 
-:global(.button).search-button
-{
-  background: #bd1f1f;
+#red{
+  background-color: #bd1f1f;
+  border: none;
 }
-
-:global(.icon){
+#white{
   color: white;
 }
+
+/* :global(.icon){
+  color: white;
+} */
 </style>
