@@ -33,7 +33,7 @@
 import { mapMutations } from 'vuex';
 
 export default {
-  emits: ['search-restaurants'],
+  emits: ['search-restaurant'],
   data() {
     return {
       item: '',
@@ -47,7 +47,7 @@ export default {
       this.item = '';
     },
     submitData() {
-      this.$emit('search-restaurants', this.search);
+      this.$emit('search-restaurant', this.search);
     },
     // async finder() {
     //   // await quewe
