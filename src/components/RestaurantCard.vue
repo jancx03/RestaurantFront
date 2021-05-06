@@ -1,10 +1,10 @@
 <template>
-  <div class="card">
-    <div class="image">
+  <div class="base-card">
+    <div class="base-image">
       <img :src="image" alt="restaurant_image">
     </div>
     <div class="main">
-      <p class="title">{{restaurant.restaurant}}</p>
+      <p class="base-title">{{restaurant.restaurant}}</p>
       <i v-for="star in restaurant.star_rate" :key="star" class="fas fa-star fill"></i>
       <i v-for="star in 5 - restaurant.star_rate" :key="star" class="fas fa-star unfill"></i>
       <p class="normal">
@@ -55,12 +55,15 @@ export default {
 
 <style scoped>
 img {
-  width: 9rem;
-  height: 9rem;
-  border-radius: .2rem;
+  border-radius: .3rem;
+  height: 10rem;
 }
 
-.card {
+.base-image {
+  width: 10rem;
+}
+
+.base-card {
   position: relative;
   display: flex;
   justify-content:left;
@@ -73,7 +76,7 @@ img {
   min-width: 30%;
 }
 
-.card:hover {
+.base-card:hover {
   -webkit-box-shadow: -.2rem 0 .5rem rgba(0, 0, 0, 0.1), .2rem .2rem .5rem rgba(0, 0, 0, 0.1);
   -moz-box-shadow: -.2rem 0 .5rem rgba(0, 0, 0, 0.1), .2rem .2rem .5rem rgba(0, 0, 0, 0.1);
   box-shadow: -.2rem 0 .5rem rgba(0, 0, 0, 0.1), .2rem .2rem .5rem rgba(0, 0, 0, 0.1);
@@ -90,7 +93,7 @@ img {
   margin-left: 1rem;
 }
 
-.title {
+.base-title {
   font-weight: 700;
 }
 
