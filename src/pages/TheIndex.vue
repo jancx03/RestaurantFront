@@ -1,7 +1,9 @@
 <template>
+
   <div class="image">
     <div>
-      <TheSearchBar />
+      <h1 class="">Restaurant Finder</h1>
+      <TheSearchBar @search-restaurant='searchRestaurant'/>
     </div>
   </div>
 </template>
@@ -14,7 +16,13 @@ export default {
   components: { TheSearchBar },
   methods: {
     ...mapActions('restaurantStore', ['queryRestaurants']),
+
   },
+  async searchRestaurant() {
+    await this.queryRestaurants();
+    return this.$router.go('/restaurants');
+  },
+
 };
 </script>
 <style scoped>
@@ -25,9 +33,15 @@ export default {
   height: 100vh;
   background-repeat: no-repeat;
   display: flex;
-  background-position: left top;
+  background-position: bottom;
   justify-content: center;
   align-items: center;
+}
+h1{
+  font-size: 300%;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: brown;
+
 }
 
 </style>

@@ -22,7 +22,9 @@
       />
     </p>
     <div id="red" class="button is-medium search-button">
-      <span id="white" class="icon is-small"><i class="fas fa-search"></i></span>
+      <span @click="submitData" id="white" class="icon is-small"
+        ><i class="fas fa-search"></i
+      ></span>
     </div>
   </div>
 </template>
@@ -31,9 +33,11 @@
 import { mapMutations } from 'vuex';
 
 export default {
+  emits: ['search-restaurant'],
   data() {
     return {
       item: '',
+      search: '',
     };
   },
   methods: {
@@ -42,36 +46,47 @@ export default {
       this.addItem(this.item.trim());
       this.item = '';
     },
+    submitData() {
+      this.$emit('search-restaurant', this.search);
+    },
+    // async finder() {
+    //   // await quewe
+    // },
   },
 };
 </script>
 
 <style scoped>
-
-.box{
+.box {
   width: 100%;
-
 }
-.input-control{
-
+.input-control {
   min-width: 320px;
   outline: none;
 }
 
-#red{
+#red {
   background-color: #bd1f1f;
   border: none;
 }
-#white{
+#white {
   color: white;
 }
-#input-color{
+#input-color {
   background-color: white;
 }
-#input-side{
+#input-side {
   border: none;
   border-style: none;
-
+}
+#input-right {
+  border: none;
+  border-left: 1px solid black;
+}
+.field.has-addons .control:not(:first-child):not(:last-child) .button,
+.field.has-addons .control:not(:first-child):not(:last-child) .input,
+.field.has-addons .control:not(:first-child):not(:last-child) .select select {
+  border: none;
 }
 /* :global(.icon){
   color: white;
