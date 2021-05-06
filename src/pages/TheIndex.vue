@@ -2,17 +2,23 @@
   <div class="image">
     <div>
       <h1 class="">Restaurant Finder</h1>
-      <TheSearchBar @search-restaurants="searchRestaurant" />
+      <TheSearchBar @search-restaurant="searchRestaurant" />
+
     </div>
   </div>
+  <div>
+
+  </div>
+
 </template>
 
 <script>
 import TheSearchBar from 'components/TheInputBar.vue';
+import TheSideBar from 'components/SideBar.vue';
 import { mapActions } from 'vuex';
 
 export default {
-  components: { TheSearchBar },
+  components: { TheSideBar, TheSearchBar },
   methods: {
     ...mapActions('restaurantStore', ['queryRestaurants']),
 
