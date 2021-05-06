@@ -2,7 +2,7 @@
   <div class="image">
     <div>
       <h1 class="">Restaurant Finder</h1>
-      <TheSearchBar @search-restaurants="searchRestaurant" />
+      <TheSearchBar @search-restaurant="searchRestaurant" />
     </div>
   </div>
 </template>
@@ -16,8 +16,8 @@ export default {
   methods: {
     ...mapActions('restaurantStore', ['queryRestaurants']),
 
-    searchRestaurant() {
-      return this.$router.push('/restaurants');
+    searchRestaurant(search) {
+      return this.$router.push({ name: 'restaurants', query: { search } });
     },
   },
 };

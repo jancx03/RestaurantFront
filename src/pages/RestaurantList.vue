@@ -33,7 +33,8 @@ export default {
     ...mapActions('restaurantStore', ['queryRestaurants']),
   },
   async mounted() {
-    await this.queryRestaurants();
+    const { search } = this.$route.query;
+    await this.queryRestaurants(search);
   },
 };
 </script>

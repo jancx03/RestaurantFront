@@ -9,6 +9,8 @@
         class="input is-medium input-control"
         type="text"
         placeholder="italian, mexican, chinese..."
+        v-model="search"
+        @keyup.enter="search"
       />
     </p>
     <p class="control">
@@ -21,8 +23,8 @@
         placeholder="addess, neighborhood, city, state or zip"
       />
     </p>
-    <div id="red" class="button is-medium search-button">
-      <span @click.prevent="submitData" id="white" class="icon is-small"
+    <div id="red" class="button is-medium search-button" @click.prevent="submitData">
+      <span id="white" class="icon is-small"
         ><i class="fas fa-search"></i
       ></span>
     </div>

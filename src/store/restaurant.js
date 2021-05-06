@@ -21,15 +21,18 @@ const mutations = {
 };
 
 const actions = {
-  queryRestaurants: async (context) => {
+  queryRestaurants: async (context, term) => {
     try {
-      const response = await fetch('https://d1o8lt9womy1vs.cloudfront.net/restaurants', {
+      const response = await fetch(`
+      https://d1o8lt9womy1vs.cloudfront.net/restaurants?search=${term}`,
+      {
         Headers: {
           'Content-Type': 'application/json',
           'Access-Control-Allow-Origin': '*',
         },
       });
       const result = response.json();
+      console.log(result);
       const restaurants = await result;
       context.commit('setRestaurants', restaurants);
       return 0;
