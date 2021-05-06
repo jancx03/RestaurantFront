@@ -1,10 +1,11 @@
 <template>
   <div class="field has-addons">
     <p class="control">
-      <button class="button is-static is-medium">Find</button>
+      <button id="input-color" class="button is-static is-medium">Find</button>
     </p>
     <p class="control">
       <input
+        id="input-side"
         class="input is-medium input-control"
         type="text"
         placeholder="italian, mexican, chinese..."
@@ -52,6 +53,7 @@ export default {
 
 }
 .input-control{
+
   min-width: 320px;
   outline: none;
 }
@@ -63,7 +65,14 @@ export default {
 #white{
   color: white;
 }
+#input-color{
+  background-color: white;
+}
+#input-side{
+  border: none;
+  border-style: none;
 
+}
 /* :global(.icon){
   color: white;
 } */
