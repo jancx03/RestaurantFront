@@ -14,7 +14,7 @@
 <script>
 import RestaurantCard from 'components/RestaurantCard.vue';
 import Skeleton from 'components/Skeleton.vue';
-import { mapGetters } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 
 export default {
   components: { RestaurantCard, Skeleton },
@@ -28,6 +28,12 @@ export default {
     ready() {
       return !!this.restaurants.length;
     },
+  },
+  methods: {
+    ...mapActions('restaurantStore', ['queryRestaurants']),
+  },
+  async mounted() {
+    await this.queryRestaurants();
   },
 };
 </script>

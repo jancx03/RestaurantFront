@@ -22,7 +22,7 @@
       />
     </p>
     <div id="red" class="button is-medium search-button">
-      <span @click="submitData" id="white" class="icon is-small"
+      <span @click.prevent="submitData" id="white" class="icon is-small"
         ><i class="fas fa-search"></i
       ></span>
     </div>
