@@ -23,7 +23,7 @@
         placeholder="addess, neighborhood, city, state or zip"
       />
     </p>
-    <div id="red" class="button is-medium search-button" @click.prevent="submitData">
+    <div @click.prevent="submitData" id="red" class="button is-medium search-button">
       <span id="white" class="icon is-small"
         ><i class="fas fa-search"></i
       ></span>

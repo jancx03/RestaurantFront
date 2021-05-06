@@ -3,16 +3,25 @@
     <div>
       <h1 class="">Restaurant Finder</h1>
       <TheSearchBar @search-restaurant="searchRestaurant" />
+<<<<<<< HEAD
+=======
+
+>>>>>>> 60e3b30176fa34f815a1ae31d22e09c9675e33c1
     </div>
   </div>
+  <div>
+
+  </div>
+
 </template>
 
 <script>
 import TheSearchBar from 'components/TheInputBar.vue';
+import TheSideBar from 'components/SideBar.vue';
 import { mapActions } from 'vuex';
 
 export default {
-  components: { TheSearchBar },
+  components: { TheSideBar, TheSearchBar },
   methods: {
     ...mapActions('restaurantStore', ['queryRestaurants']),
 
