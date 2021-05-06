@@ -16,11 +16,10 @@ export default {
   components: { TheSearchBar },
   methods: {
     ...mapActions('restaurantStore', ['queryRestaurants']),
-
-  },
-  async searchRestaurant() {
-    await this.queryRestaurants();
-    return this.$router.go('/restaurants');
+    async searchRestaurant() {
+      await this.queryRestaurants();
+      return this.$router.push('/restaurants');
+    },
   },
 
 };
