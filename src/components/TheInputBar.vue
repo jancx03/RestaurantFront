@@ -22,7 +22,7 @@
       />
     </p>
     <div id="red" class="button is-medium search-button">
-      <span @click="submitData" id="white" class="icon is-small"
+      <span @click.prevent="submitData" id="white" class="icon is-small"
         ><i class="fas fa-search"></i
       ></span>
     </div>
@@ -33,7 +33,7 @@
 import { mapMutations } from 'vuex';
 
 export default {
-  emits: ['search-restaurant'],
+  emits: ['search-restaurants'],
   data() {
     return {
       item: '',
@@ -47,7 +47,7 @@ export default {
       this.item = '';
     },
     submitData() {
-      this.$emit('search-restaurant', this.search);
+      this.$emit('search-restaurants', this.search);
     },
     // async finder() {
     //   // await quewe

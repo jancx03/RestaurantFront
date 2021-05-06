@@ -1,9 +1,8 @@
 <template>
-
   <div class="image">
     <div>
       <h1 class="">Restaurant Finder</h1>
-      <TheSearchBar @search-restaurant='searchRestaurant'/>
+      <TheSearchBar @search-restaurants="searchRestaurant" />
     </div>
   </div>
 </template>
@@ -17,12 +16,10 @@ export default {
   methods: {
     ...mapActions('restaurantStore', ['queryRestaurants']),
 
+    searchRestaurant() {
+      return this.$router.push('/restaurants');
+    },
   },
-  async searchRestaurant() {
-    await this.queryRestaurants();
-    return this.$router.go('/restaurants');
-  },
-
 };
 </script>
 <style scoped>
