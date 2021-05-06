@@ -8,6 +8,8 @@ export default createRouter({
   routes: [
     { name: 'index', path: '/', component: TheIndex },
     { name: 'restaurants', path: '/restaurants', component: RestaurantList },
-    { name: 'catch', path: '/:catch-all', component: NotFound },
+    {
+      path: '/:catch', component: NotFound, props: true,
+    },
   ],
 });
