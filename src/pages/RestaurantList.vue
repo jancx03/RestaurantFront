@@ -29,6 +29,11 @@ export default {
   components: {
     RestaurantCard, Skeleton, TheSearchBar, TheSideBar,
   },
+  watch: {
+    $route() {
+      this.getRestaurants();
+    },
+  },
   computed: {
     ...mapGetters('restaurantStore', ['restaurants']),
     ready() {

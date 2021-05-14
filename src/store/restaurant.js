@@ -24,10 +24,9 @@ const actions = {
   queryRestaurants: async (context, payload) => {
     try {
       const { search, location } = payload;
+      console.log(payload);
       const response = await fetch(`
-      https://d1o8lt9womy1vs.cloudfront.net/restaurants
-      ?search=${search}
-      &location=${location}`,
+      https://d1o8lt9womy1vs.cloudfront.net/restaurants?search=${search}`,
       {
         Headers: {
           'Content-Type': 'application/json',
