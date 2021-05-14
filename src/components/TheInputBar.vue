@@ -5,16 +5,15 @@
     </p>
     <p class="control">
       <input
+        v-model="search"
         id="input-side"
         class="input is-medium input-control"
         type="text"
         placeholder="italian, mexican, chinese..."
-        v-model="search"
-        @keyup.enter="search"
       />
     </p>
     <p class="control">
-      <button class="button is-static is-medium">Near</button>
+      <button id="input-n" class="button is-static is-medium">Near</button>
     </p>
     <p class="control">
       <input
@@ -23,7 +22,7 @@
         placeholder="addess, neighborhood, city, state or zip"
       />
     </p>
-    <div @click.prevent="submitData" id="red" class="button is-medium search-button">
+    <div @click.prevent="searchRestaurant(search)" id="red" class="button is-medium search-button">
       <span id="white" class="icon is-small"
         ><i class="fas fa-search"></i
       ></span>
@@ -35,7 +34,7 @@
 import { mapMutations } from 'vuex';
 
 export default {
-  emits: ['search-restaurant'],
+  // emits: ['search-restaurant'],
   data() {
     return {
       item: '',
@@ -48,8 +47,9 @@ export default {
       this.addItem(this.item.trim());
       this.item = '';
     },
-    submitData() {
-      this.$emit('search-restaurant', this.search);
+
+    searchRestaurant(search) {
+      return this.$router.push({ name: 'restaurants', query: { search } });
     },
     // async finder() {
     //   // await quewe
@@ -77,19 +77,17 @@ export default {
 #input-color {
   background-color: white;
 }
-#input-side {
-  border: none;
-  border-style: none;
+#input-n{
+  background-color: white;
 }
-#input-right {
-  border: none;
-  border-left: 1px solid black;
+input:focus{
+  outline: none;
 }
-.field.has-addons .control:not(:first-child):not(:last-child) .button,
+/* .field.has-addons .control:not(:first-child):not(:last-child) .button,
 .field.has-addons .control:not(:first-child):not(:last-child) .input,
 .field.has-addons .control:not(:first-child):not(:last-child) .select select {
   border: none;
-}
+} */
 /* :global(.icon){
   color: white;
 } */

@@ -1,5 +1,5 @@
 <template>
-  <div class=" flex justify-center shadow-inner pt-8 pb-4">
+  <div class="flex justify-center pt-5">
     <TheSearchBar/>
   </div>
   <div class="main">
@@ -42,18 +42,20 @@ export default {
     const { search } = this.$route.query;
     await this.queryRestaurants(search);
   },
-  searchRestaurant(search) {
-    return this.$router.push({ name: 'restaurants', query: { search } });
-  },
+  // searchRestaurant(search) {
+  //   return this.$router.push({ name: 'restaurants', query: { search } });
+  // },
 };
 </script>
 
 <style scoped>
+
 .main {
   width: 100vw;
   display: flex;
   justify-content:left;
   align-items: flex-start;
+
 }
   /* display: inline-grid;
   grid-auto-rows: 1fr;
