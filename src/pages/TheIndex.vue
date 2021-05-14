@@ -2,7 +2,7 @@
   <div class="image">
     <div>
       <h1 class="">Restaurant Finder</h1>
-      <TheSearchBar @search-restaurant="searchRestaurant" />
+      <TheSearchBar />
     </div>
   </div>
   <div>
@@ -20,9 +20,9 @@ export default {
   methods: {
     ...mapActions('restaurantStore', ['queryRestaurants']),
 
-    searchRestaurant(search) {
-      return this.$router.push({ name: 'restaurants', query: { search } });
-    },
+    // searchRestaurant(search) {
+    //   return this.$router.push({ name: 'restaurants', query: { search } });
+    // },
   },
 };
 </script>
