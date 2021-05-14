@@ -4,7 +4,7 @@
       <img :src="restaurant.url_name" :alt="restaurant.url_name">
     </div>
     <div class="main">
-      <p class="base-title">{{index}}. {{restaurant.restaurant}}</p>
+      <p class="base-title">{{index}}. {{name}}</p>
       <i v-for="star in restaurant.star_rate" :key="star" class="fas fa-star fill"></i>
       <i v-for="star in 5 - restaurant.star_rate" :key="star" class="fas fa-star unfill"></i>
       <p class="normal">
@@ -33,6 +33,12 @@
 <script>
 export default {
   props: ['restaurant', 'index'],
+  computed: {
+    name(/* String */) {
+      /* Add space after before every capital letter */
+      return this.restaurant.restaurant.replace(/([A-Z])/g, ' $1').trim();
+    },
+  },
   methods: {
     toBool(/* string */ value) {
       let result;

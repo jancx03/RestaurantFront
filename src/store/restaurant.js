@@ -21,10 +21,13 @@ const mutations = {
 };
 
 const actions = {
-  queryRestaurants: async (context, term) => {
+  queryRestaurants: async (context, payload) => {
     try {
+      const { search, location } = payload;
       const response = await fetch(`
-      https://d1o8lt9womy1vs.cloudfront.net/restaurants?search=${term}`,
+      https://d1o8lt9womy1vs.cloudfront.net/restaurants
+      ?search=${search}
+      &location=${location}`,
       {
         Headers: {
           'Content-Type': 'application/json',
