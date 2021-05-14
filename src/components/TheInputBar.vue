@@ -17,12 +17,13 @@
     </p>
     <p class="control">
       <input
+        v-model="location"
         class="input is-medium input-control"
         type="text"
         placeholder="addess, neighborhood, city, state or zip"
       />
     </p>
-    <div @click.prevent="searchRestaurant(search)" id="red" class="button is-medium search-button">
+    <div @click.prevent="searchRestaurant" id="red" class="button is-medium search-button">
       <span id="white" class="icon is-small"
         ><i class="fas fa-search"></i
       ></span>
@@ -39,6 +40,7 @@ export default {
     return {
       item: '',
       search: '',
+      location: '',
     };
   },
   methods: {
@@ -48,9 +50,12 @@ export default {
       this.item = '';
     },
 
-    searchRestaurant(search) {
-      return this.$router.push({ name: 'restaurants', query: { search } });
+    searchRestaurant() {
+      const { search, location } = this;
+
+      return this.$router.push({ name: 'restaurants', query: { search, location } });
     },
+
     // async finder() {
     //   // await quewe
     // },
