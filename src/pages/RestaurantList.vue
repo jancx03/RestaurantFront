@@ -42,6 +42,9 @@ export default {
     const { search } = this.$route.query;
     await this.queryRestaurants(search);
   },
+  searchRestaurant(search) {
+    return this.$router.push({ name: 'restaurants', query: { search } });
+  },
 };
 </script>
 
