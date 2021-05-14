@@ -1,6 +1,6 @@
 <template>
-  <div class=" flex justify-center shadow-inner pt-8 pb-4">
-    <TheSearchBar/>
+  <div class=" flex justify-center pt-8 pb-4 shadow-2xl">
+    <TheSearchBar @search-restaurant="searchRestaurant"/>
     <!-- <div><TheSideBar/></div> -->
   </div>
   <ul v-if="ready">
@@ -45,6 +45,9 @@ export default {
   async mounted() {
     const { search } = this.$route.query;
     await this.queryRestaurants(search);
+  },
+  searchRestaurant(search) {
+    return this.$router.push({ name: 'restaurants', query: { search } });
   },
 };
 </script>
