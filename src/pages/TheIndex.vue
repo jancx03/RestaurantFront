@@ -13,11 +13,10 @@
 
 <script>
 import TheSearchBar from 'components/TheInputBar.vue';
-import TheSideBar from 'components/SideBar.vue';
 import { mapActions } from 'vuex';
 
 export default {
-  components: { TheSideBar, TheSearchBar },
+  components: { TheSearchBar },
   methods: {
     ...mapActions('restaurantStore', ['queryRestaurants']),
 
