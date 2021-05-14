@@ -1,10 +1,10 @@
 <template>
   <div class="base-card">
     <div class="base-image">
-      <img :src="image" alt="restaurant_image">
+      <img :src="restaurant.url_name" :alt="restaurant.url_name">
     </div>
     <div class="main">
-      <p class="base-title">{{restaurant.restaurant}}</p>
+      <p class="base-title">{{index}}. {{restaurant.restaurant}}</p>
       <i v-for="star in restaurant.star_rate" :key="star" class="fas fa-star fill"></i>
       <i v-for="star in 5 - restaurant.star_rate" :key="star" class="fas fa-star unfill"></i>
       <p class="normal">
@@ -12,11 +12,11 @@
         <span class="dot">&middot;</span>
         <span>{{restaurant.type}}</span></p>
       <p class="normal">
-        <span class="check" v-if="sToB(restaurant.reserve)"><i class="fas fa-check"></i></span>
+        <span class="check" v-if="toBool(restaurant.reserve)"><i class="fas fa-check"></i></span>
         <span class="close" v-else><i class="fas fa-times"></i></span>
         <span class="feature">Reserve</span>
         <span class="check"
-          v-if="sToB(restaurant.kid_friendly)">
+          v-if="toBool(restaurant.kid_friendly)">
           <i class="fas fa-check"></i>
         </span>
         <span v-else><i class="fas fa-times"></i></span>
@@ -32,10 +32,9 @@
 
 <script>
 export default {
-  props: ['restaurant', 'image'],
+  props: ['restaurant', 'index'],
   methods: {
-    /** Convert string no or yes to boolean */
-    sToB(/* string */ value) {
+    toBool(/* string */ value) {
       let result;
 
       switch (value) {
@@ -56,11 +55,12 @@ export default {
 <style scoped>
 img {
   border-radius: .3rem;
-  height: 10rem;
+  height: 12.5rem;
+  width: 12.5rem;
 }
 
 .base-image {
-  width: 10rem;
+  width: 12.5rem;
 }
 
 .base-card {
@@ -74,6 +74,7 @@ img {
   margin: 1rem 1rem;
   padding: 1rem;
   min-width: 30%;
+  width: 100%;
 }
 
 .base-card:hover {
@@ -90,16 +91,19 @@ img {
 }
 
 .main {
-  margin-left: 1rem;
+  padding-left: 1rem;
+  margin-right: 15rem;
 }
 
 .base-title {
   font-weight: 700;
+  font-size: 1.3rem;
+  color: black;
 }
 
 .normal {
   font-weight: 300;
-  font-size: .9rem;
+  font-size: 1rem;
 }
 
 .fill {
@@ -137,5 +141,8 @@ img {
 
 .feature {
   margin: 0 .7rem;
+  font-weight: 500;
+  font-size: 1rem;
+  color: black;
 }
 </style>
