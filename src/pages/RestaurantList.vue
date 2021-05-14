@@ -37,11 +37,16 @@ export default {
   },
   methods: {
     ...mapActions('restaurantStore', ['queryRestaurants']),
+    async getRestaurants() {
+      const { search, location } = this.$route.query;
+      const payload = { search, location };
+      await this.queryRestaurants(payload);
+      return 0;
+    },
   },
   async mounted() {
-    const { search, location } = this.$route.query;
-    const payload = { search, location };
-    await this.queryRestaurants(payload);
+    await this.getRestaurants();
+    return 0;
   },
 };
 </script>
