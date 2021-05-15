@@ -1,21 +1,12 @@
 <template>
   <div class="">
-    <div
-      class="flex flex-col w-full md:w-64 text-gray-700 bg-white dark-mode:text-gray-200 dark-mode:bg-gray-800 flex-shrink-0"
-      x-data="{ open: false }"
-    >
-      <div
-        class="flex-shrink-0 px-8 py-4 flex flex-row items-center justify-between"
-      >
-        <a
-          href="#"
-          class="text-lg font-semibold tracking-widest text-gray-900 uppercase rounded-lg dark-mode:text-white focus:outline-none focus:shadow-outline"
-          >Filters</a
-        >
-        <button
-          class="rounded-lg md:hidden rounded-lg focus:outline-none focus:shadow-outline"
-
-        >
+    <div class="flex flex-col w-full md:w-64 text-gray-700 bg-white dark-mode:text-gray-200 dark-mode:bg-gray-800 flex-shrink-0"
+      x-data="{ open: false }">
+      <div class="flex-shrink-0 px-8 py-4 flex flex-row items-center justify-between">
+        <a href="#" class="text-lg font-semibold tracking-widest text-gray-900 uppercase rounded-lg dark-mode:text-white focus:outline-none focus:shadow-outline">
+          Filters
+        </a>
+        <button class="rounded-lg md:hidden rounded-lg focus:outline-none focus:shadow-outline">
           <svg fill="currentColor" viewBox="0 0 20 20" class="w-6 h-6">
             <path
               x-show="!open"
@@ -32,8 +23,7 @@
           </svg>
         </button>
       </div>
-      <nav
-        :class="{ block: open, hidden: !open }"
+      <nav :class="{ block: open, hidden: !open }"
         class="flex-grow md:block px-4 pb-4 md:pb-0 md:overflow-y-auto"
       >
         <a
@@ -51,16 +41,8 @@
             <button @click="costMethod('$$$')" class="w-full border-fuchsia-600 ">$$$</button>
           </div>
           </div>
-
-            </a
-        >
-        <a
-          class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-900 bg-transparent rounded-lg "
-          href="#"
-        >
         <hr>
         <div> Avg. Restaurant Rating</div>
-         <li>
           <ul class="pb-1">
             <div>
               <i v-for="star in 4" :key="star" class="fas fa-star fill"></i>
@@ -85,9 +67,6 @@
               <i v-for="star in 4" :key="star" class="fas fa-star unfill"></i><span>& Up</span>
             </div>
           </ul>
-
-        </li>
-
         </a>
 
         <!-- Features -->
