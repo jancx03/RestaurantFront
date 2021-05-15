@@ -40,6 +40,7 @@
           class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-900"
           href="#"
           >
+
           <div class="flex bg-gray-100 rounded-full border-2 border-gray-300">
           <div class="w-full text-center  hover:bg-gray-300">
             <button @click="costMethod('$')" class="w-full border-fuchsia-600">$</button>
@@ -58,29 +59,30 @@
           class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-900 bg-transparent rounded-lg "
           href="#"
         >
+         <!-- Restaurant Rating -->
         <hr>
-        <div> Avg. Restaurant Rating</div>
+        <p class="feature-title">Rating</p>
          <li>
           <ul class="pb-1">
-            <div>
+            <div @click="ratingMethod(4)">
               <i v-for="star in 4" :key="star" class="fas fa-star fill"></i>
               <i v-for="star in 1" :key="star" class="fas fa-star unfill"></i><span>& Up</span>
             </div>
           </ul>
           <ul class="pb-1">
-           <div>
+           <div @click="ratingMethod(3)">
               <i v-for="star in 3" :key="star" class="fas fa-star fill"></i>
               <i v-for="star in 2" :key="star" class="fas fa-star unfill"></i><span>& Up</span>
             </div>
           </ul>
           <ul class="pb-1">
-          <div>
+          <div @click="ratingMethod(2)">
               <i v-for="star in 2" :key="star" class="fas fa-star fill"></i>
               <i v-for="star in 3" :key="star" class="fas fa-star unfill"></i><span>& Up</span>
             </div>
           </ul>
           <ul class="pb-1">
-           <div>
+           <div @click="ratingMethod(1)">
               <i v-for="star in 1" :key="star" class="fas fa-star fill"></i>
               <i v-for="star in 4" :key="star" class="fas fa-star unfill"></i><span>& Up</span>
             </div>
@@ -191,6 +193,9 @@ export default {
   methods: {
     costMethod(x) {
       console.log(x);
+    },
+    ratingMethod(z) {
+      console.log(z);
     },
   },
 };
