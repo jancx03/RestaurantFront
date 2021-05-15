@@ -76,6 +76,7 @@
 
         </div>
 
+        <!-- Features -->
         <hr>
         <p class="feature-title">Features</p>
         <div>
@@ -91,6 +92,7 @@
           <span class="feature">Accessability</span>
         </div>
 
+        <!-- Payment Methods -->
         <hr>
         <p class="feature-title">Payment Methods</p>
         <div>
@@ -107,8 +109,37 @@
           type="radio" value="both" checked/>
           <span class="feature">Both</span>
         </div>
+
+        <!-- Sanitary -->
+        <hr>
+        <p class="feature-title">Sanitary</p>
+        <select v-model="sanitary" name="sanitary">
+          <option value="A">A rated</option>
+          <option value="B">B rated</option>
+          <option value="C">C rated</option>
+          <option value="all" selected>All</option>
+        </select>
+
+      <!-- Wait Time -->
+        <hr>
+        <p class="feature-title">Wait Time</p>
+        <div>
+          <input name="wait" v-model="waitTime" class="check" type="radio"  value="15"/>
+          <span class="feature">Less than 15 minutes</span>
+        </div>
+        <div>
+          <input name="wait" v-model="waitTime" class="check"
+          type="radio"  value="30"/>
+          <span class="feature">Less than 30 minutes</span>
+        </div>
+        <div>
+          <input name="wait" v-model="waitTime" class="check"
+          type="radio" value="none" checked/>
+          <span class="feature">No Preference</span>
+        </div>
       </nav>
     </div>
+
   </div>
 </template>
 
@@ -119,7 +150,9 @@ export default {
       kidFriendly: null,
       reserve: null,
       accessability: null,
-      paymentMethod: null,
+      paymentMethod: 'both',
+      sanitary: 'all',
+      waitTime: 'none',
     };
   },
   watch: {
@@ -134,6 +167,12 @@ export default {
     },
     paymentMethod() {
       console.log(this.paymentMethod);
+    },
+    sanitary() {
+      console.log(this.sanitary);
+    },
+    waitTime() {
+      console.log(this.waitTime);
     },
   },
 };
