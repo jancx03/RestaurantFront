@@ -42,39 +42,54 @@
           >
           <div class="flex bg-gray-100 rounded-full border-2 border-gray-300">
           <div class="w-full text-center  hover:bg-gray-300">
-            <button class="w-full border-fuchsia-600">$</button>
+            <button @click="costMethod('$')" class="w-full border-fuchsia-600">$</button>
           </div>
           <div class="w-full text-center  hover:bg-gray-300">
-            <button class="w-full border-l-2 border border-fuchsia-600">$$</button>
+            <button @click="costMethod('$$')" class="w-full border-l-2 border border-fuchsia-600">$$</button>
           </div>
           <div class=" w-full text-center  hover:bg-gray-300">
-            <button class="w-full border-fuchsia-600 ">$$$</button>
+            <button @click="costMethod('$$$')" class="w-full border-fuchsia-600 ">$$$</button>
           </div>
           </div>
 
             </a
         >
         <a
-          class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-900 bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
+          class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-900 bg-transparent rounded-lg "
           href="#"
-          >Portfolio</a
         >
-        <a
-          class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-900 bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
-          href="#"
-          >About</a
-        >
-        <a
-          class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-900 bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
-          href="#"
-          >Contact</a
-        >
-        <div
-          class="relative"
-          x-data="{ open: false }"
-        >
+        <hr>
+        <div> Avg. Restaurant Rating</div>
+         <li>
+          <ul class="pb-1">
+            <div>
+              <i v-for="star in 4" :key="star" class="fas fa-star fill"></i>
+              <i v-for="star in 1" :key="star" class="fas fa-star unfill"></i><span>& Up</span>
+            </div>
+          </ul>
+          <ul class="pb-1">
+           <div>
+              <i v-for="star in 3" :key="star" class="fas fa-star fill"></i>
+              <i v-for="star in 2" :key="star" class="fas fa-star unfill"></i><span>& Up</span>
+            </div>
+          </ul>
+          <ul class="pb-1">
+          <div>
+              <i v-for="star in 2" :key="star" class="fas fa-star fill"></i>
+              <i v-for="star in 3" :key="star" class="fas fa-star unfill"></i><span>& Up</span>
+            </div>
+          </ul>
+          <ul class="pb-1">
+           <div>
+              <i v-for="star in 1" :key="star" class="fas fa-star fill"></i>
+              <i v-for="star in 4" :key="star" class="fas fa-star unfill"></i><span>& Up</span>
+            </div>
+          </ul>
 
-        </div>
+        </li>
+
+        </a
+        >
 
         <!-- Features -->
         <hr>
@@ -168,11 +183,19 @@ export default {
     paymentMethod() {
       console.log(this.paymentMethod);
     },
+<<<<<<< HEAD
     sanitary() {
       console.log(this.sanitary);
     },
     waitTime() {
       console.log(this.waitTime);
+=======
+
+  },
+  methods: {
+    costMethod(x) {
+      console.log(x);
+>>>>>>> 94dfaf7da0d10e259288ab7263640202d1e43b3e
     },
   },
 };
@@ -198,5 +221,23 @@ export default {
   -webkit-transform: scale(1.7); /* Safari and Chrome */
   -o-transform: scale(1.7); /* Opera */
   transform: scale(1.7);
+}
+
+.unfill {
+  color: white;
+  background-color: lightgrey;
+  font-size: .7rem;
+  padding: .3rem;
+  margin-right: .2rem;
+  border-radius: .4rem;
+}
+
+.fill {
+  color: white;
+  background-color: red;
+  font-size: .7rem;
+  padding: .3rem;
+  margin-right: .2rem;
+  border-radius: .4rem;
 }
 </style>
