@@ -88,8 +88,7 @@
 
         </li>
 
-        </a
-        >
+        </a>
 
         <!-- Features -->
         <hr>
@@ -154,7 +153,6 @@
         </div>
       </nav>
     </div>
-
   </div>
 </template>
 
@@ -183,19 +181,16 @@ export default {
     paymentMethod() {
       console.log(this.paymentMethod);
     },
-<<<<<<< HEAD
     sanitary() {
       console.log(this.sanitary);
     },
     waitTime() {
       console.log(this.waitTime);
-=======
-
+    },
   },
   methods: {
     costMethod(x) {
       console.log(x);
->>>>>>> 94dfaf7da0d10e259288ab7263640202d1e43b3e
     },
   },
 };
