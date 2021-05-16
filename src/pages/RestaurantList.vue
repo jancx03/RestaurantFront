@@ -45,8 +45,30 @@ export default {
   methods: {
     ...mapActions('restaurantStore', ['queryRestaurants']),
     async getRestaurants() {
-      const { search, location } = this.$route.query;
-      const payload = { search, location };
+      const {
+        search,
+        location,
+        cost,
+        rating,
+        kidfriendly,
+        reserve,
+        accessability,
+        sanitary,
+        wait,
+      } = this.$route.query;
+
+      const payload = {
+        search,
+        location,
+        cost,
+        rating,
+        kidfriendly,
+        reserve,
+        accessability,
+        sanitary,
+        wait,
+      };
+
       await this.queryRestaurants(payload);
       this.setMap();
       return 0;
