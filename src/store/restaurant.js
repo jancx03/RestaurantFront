@@ -21,27 +21,29 @@ const mutations = {
 };
 
 const actions = {
-  queryRestaurants: async (context, payload) => {
-    try {
-      const { search, location } = payload;
-      console.log(payload);
-      const response = await fetch(`
+  queryRestaurants: async (context, payload) => new Promise((resolve, reject) => {
+    const request = async () => {
+      try {
+        const { search /* location */ } = payload;
+        const response = await fetch(`
       https://d1o8lt9womy1vs.cloudfront.net/restaurants?search=${search}`,
-      {
-        Headers: {
-          'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin': '*',
-        },
-      });
-      const result = response.json();
-      const restaurants = await result;
-      context.commit('setRestaurants', restaurants);
-      return 0;
-    } catch (err) {
-      context.commit('error', err);
-      return 1;
-    }
-  },
+        {
+          Headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*',
+          },
+        });
+        const result = response.json();
+        const restaurants = await result;
+        context.commit('setRestaurants', restaurants);
+        return resolve();
+      } catch (err) {
+        context.commit('error', err);
+        return reject(err);
+      }
+    };
+    request();
+  }),
 };
 
 export default {

@@ -14,6 +14,7 @@
         <Skeleton />
       </li>
     </ul>
+    <div id='map' class="map"></div>
   </div>
 </template>
 
@@ -22,6 +23,7 @@ import RestaurantCard from 'components/RestaurantCard.vue';
 import Skeleton from 'components/Skeleton.vue';
 import TheSearchBar from 'components/TheInputBar.vue';
 import TheSideBar from 'components/SideBar.vue';
+import mapboxgl from 'mapbox-gl';
 
 import { mapGetters, mapActions } from 'vuex';
 
@@ -46,6 +48,72 @@ export default {
       const { search, location } = this.$route.query;
       const payload = { search, location };
       await this.queryRestaurants(payload);
+      this.setMap();
+      return 0;
+    },
+    setMap() {
+      if (!this.restaurants.length) {
+        console.log('No Restaurants found');
+        return 0;
+      }
+
+      const geojson = {
+        type: 'FeatureCollection',
+        features: [],
+      };
+
+      this.restaurants.map((res, index) => {
+        geojson.features.push({
+          type: 'Feature',
+          geometry: {
+            type: 'Point',
+            coordinates: [res.lng, res.lat],
+          },
+          properties: {
+            title: `${index}. ${res.restaurant}`,
+            description: 'res.address',
+            image: res.url_name,
+          },
+        });
+        return 0;
+      });
+
+      mapboxgl.accessToken = 'pk.eyJ1IjoiY3RkZXNpbmciLCJhIjoiY2tvcWYwOXJjMHEwaTJwbWwxZGwwejkwbSJ9.8BA0UoADT3VrnsjA8Z-mmQ';
+
+      const { lng, lat } = this.restaurants[0];
+
+      const map = new mapboxgl.Map({
+        container: 'map', // container ID
+        style: 'mapbox://styles/mapbox/streets-v11', // style URL
+        center: [lng, lat], // starting position [lng, lat]
+        zoom: 13, // starting zoom
+      });
+
+      geojson.features.forEach((marker, index) => {
+        // Create a DOM element for each marker.
+        const el = document.createElement('div');
+        el.className = 'marker';
+        el.style.backgroundImage = `url(${marker.properties.image})`;
+        // el.style.backgroundColor = 'red';
+        el.style.color = 'white';
+        el.style.borderRadius = '3rem';
+        el.style.width = '30px';
+        el.style.height = '30px';
+        el.style.textAlign = 'center';
+        el.style.fontWeight = 'bold';
+        el.innerText = index + 1;
+        el.style.backgroundSize = '100%';
+
+        el.addEventListener('click', () => {
+          window.alert('Hello World!');
+        });
+
+        // Add markers to the map.
+        new mapboxgl.Marker(el)
+          .setLngLat(marker.geometry.coordinates)
+          .addTo(map);
+      });
+
       return 0;
     },
   },
@@ -59,16 +127,28 @@ export default {
 <style scoped>
 
 .main {
-  width: 100vw;
+  /* width: 100vw;
   display: flex;
   justify-content:left;
-  align-items: flex-start;
-
-}
-  /* display: inline-grid;
+  align-items: flex-start; */
+  display: inline-grid;
   grid-auto-rows: 1fr;
   grid-template-rows:  auto;
   transition: all .3s linear;
   justify-items: center;
-  grid-template-columns: 20% 60% 20%; */
+  grid-template-columns: 20% 60% 20%;
+}
+
+.map {
+  width: 350px;
+  height: 500px;
+}
+
+.marker {
+  display: block;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  padding: 0;
+}
 </style>
