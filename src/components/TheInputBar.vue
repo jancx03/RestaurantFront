@@ -40,7 +40,7 @@ export default {
     return {
       item: '',
       search: '',
-      location: '',
+      location: 'Fulton St',
     };
   },
   methods: {
