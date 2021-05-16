@@ -28,14 +28,22 @@ const actions = {
       const keys = Object.keys(payload);
       let params = '';
 
+      let parameterCount = 0;
+
       keys.map((key) => {
         if (payload[key] !== undefined) {
-          params = params.concat(`&${key}=${payload[key]}`);
+          if (parameterCount === 0) {
+            params = params.concat(`?${key}=${payload[key]}`);
+            parameterCount++;
+          } else {
+            params = params.concat(`&${key}=${payload[key]}`);
+            parameterCount++;
+          }
         }
         return 0;
       });
 
-      const apiUrl = `https://d1o8lt9womy1vs.cloudfront.net/restaurants?search=${search}${params}`;
+      const apiUrl = `https://d1o8lt9womy1vs.cloudfront.net/restaurants${params}`;
 
       console.log(apiUrl);
 
