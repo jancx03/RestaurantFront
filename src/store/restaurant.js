@@ -23,8 +23,6 @@ const mutations = {
 const actions = {
   queryRestaurants: async (context, payload) => new Promise((resolve, reject) => {
     const request = async () => {
-      const { search } = payload;
-
       const keys = Object.keys(payload);
       let params = '';
 
@@ -32,6 +30,9 @@ const actions = {
 
       keys.map((key) => {
         if (payload[key] !== undefined) {
+          if (payload[key] === 'false' || payload[key] === 'all') {
+            return 0;
+          }
           if (parameterCount === 0) {
             params = params.concat(`?${key}=${payload[key]}`);
             parameterCount++;
@@ -39,13 +40,12 @@ const actions = {
             params = params.concat(`&${key}=${payload[key]}`);
             parameterCount++;
           }
+          return 0;
         }
         return 0;
       });
 
       const apiUrl = `https://d1o8lt9womy1vs.cloudfront.net/restaurants${params}`;
-
-      console.log(apiUrl);
 
       try {
         const response = await fetch(apiUrl,

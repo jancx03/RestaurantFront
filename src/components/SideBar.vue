@@ -81,24 +81,6 @@
           <span class="feature">Accessability</span>
         </div>
 
-        <!-- Payment Methods -->
-        <hr>
-        <p class="feature-title">Payment Methods</p>
-        <div>
-          <input name="paymethod" v-model="paymentMethod" class="check" type="radio"  value="cash"/>
-          <span class="feature">Cash</span>
-        </div>
-        <div>
-          <input name="paymethod" v-model="paymentMethod" class="check"
-          type="radio"  value="credit"/>
-          <span class="feature">Credit</span>
-        </div>
-        <div>
-          <input name="paymethod" v-model="paymentMethod" class="check"
-          type="radio" value="both" checked/>
-          <span class="feature">Both</span>
-        </div>
-
         <!-- Sanitary -->
         <hr>
         <p class="feature-title">Sanitary</p>
@@ -123,7 +105,7 @@
         </div>
         <div>
           <input name="wait" v-model="waitTime" class="check"
-          type="radio" value="none" checked/>
+          type="radio" value="all" checked/>
           <span class="feature">No Preference</span>
         </div>
       </nav>
