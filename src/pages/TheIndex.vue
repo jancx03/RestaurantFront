@@ -2,6 +2,7 @@
   <div class="image">
     <div>
       <h1 class="">Restaurant Finder</h1>
+      <title></title>
       <TheSearchBar />
     </div>
   </div>
@@ -40,9 +41,11 @@ export default {
 }
 
 h1{
-  font-size: 300%;
+  font-size: 400%;
+  font-weight: 400;
+  text-align: center;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  color: brown;
+ color: brown;
 
 }
 </style>
