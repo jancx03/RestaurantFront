@@ -5,17 +5,17 @@ import restaurantStore from './restaurant.js';
 const modules = { restaurantStore };
 
 const state = () => ({
-  items: [],
+  coordinates: [],
 });
 
 const getters = {
-  items: (state) => state.items,
+  coordinates: (state) => state.coordinates,
 };
 
 const actions = {};
 
 const mutations = {
-  addItem: (state, item) => state.items.push(item),
+  setCoordinates: (state, coordinates) => state.coordinates = coordinates,
 };
 
 export default createStore({

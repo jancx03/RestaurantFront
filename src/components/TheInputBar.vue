@@ -40,7 +40,7 @@ export default {
     return {
       item: '',
       search: '',
-      location: 'Fulton St',
+      location: 'New York, NY',
     };
   },
   methods: {
@@ -59,6 +59,14 @@ export default {
     // async finder() {
     //   // await quewe
     // },
+  },
+  mounted() {
+    if (this.$route.query.search !== undefined) {
+      this.search = this.$route.query.search;
+      this.location = this.$route.query.location;
+    }
+
+    return 0;
   },
 };
 </script>

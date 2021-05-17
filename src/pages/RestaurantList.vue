@@ -38,6 +38,7 @@ export default {
   },
   computed: {
     ...mapGetters('restaurantStore', ['restaurants']),
+    ...mapGetters(['coordinates']),
     ready() {
       return !!this.restaurants.length;
     },
@@ -102,7 +103,8 @@ export default {
 
       mapboxgl.accessToken = 'pk.eyJ1IjoiY3RkZXNpbmciLCJhIjoiY2tvcWYwOXJjMHEwaTJwbWwxZGwwejkwbSJ9.8BA0UoADT3VrnsjA8Z-mmQ';
 
-      const { lng, lat } = this.restaurants[0];
+      const lng = this.coordinates[0];
+      const lat = this.coordinates[1];
 
       const map = new mapboxgl.Map({
         container: 'map', // container ID

@@ -21,7 +21,7 @@ const mutations = {
 };
 
 const actions = {
-  queryRestaurants: async (context, payload) => new Promise((resolve, reject) => {
+  queryRestaurants: async ({ commit }, payload) => new Promise((resolve, reject) => {
     const request = async () => {
       const keys = Object.keys(payload);
       let params = '';
@@ -55,12 +55,13 @@ const actions = {
               'Access-Control-Allow-Origin': '*',
             },
           });
-        const result = response.json();
-        const restaurants = await result;
-        context.commit('setRestaurants', restaurants);
+        const json = response.json();
+        const result = await json;
+        commit('setRestaurants', result.data);
+        commit('setCoordinates', result.coordinates, { root: true });
         return resolve();
       } catch (err) {
-        context.commit('error', err);
+        commit('error', err);
         return reject(err);
       }
     };

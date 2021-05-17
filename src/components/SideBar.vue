@@ -88,7 +88,7 @@
           <option value="A">A rated</option>
           <option value="B">B rated</option>
           <option value="C">C rated</option>
-          <option value="all" selected>All</option>
+          <option value="all">All</option>
         </select>
 
       <!-- Wait Time -->
@@ -105,7 +105,7 @@
         </div>
         <div>
           <input name="wait" v-model="waitTime" class="check"
-          type="radio" value="all" checked/>
+          type="radio" value="all"/>
           <span class="feature">No Preference</span>
         </div>
       </nav>
@@ -117,12 +117,11 @@
 export default {
   data() {
     return {
-      kidFriendly: null,
-      reserve: null,
-      accessability: null,
-      paymentMethod: 'both',
+      kidFriendly: false,
+      reserve: false,
+      accessability: false,
       sanitary: 'all',
-      waitTime: 'none',
+      waitTime: 'all',
     };
   },
   watch: {
@@ -163,6 +162,21 @@ export default {
     ratingMethod(rating) {
       return this.$router.push({ name: 'restaurants', query: { ...this.$route.query, rating } });
     },
+  },
+  mounted() {
+    const {
+      kidfriendly,
+      reserve,
+      accessability,
+      sanitary,
+      wait,
+    } = this.$route.query;
+
+    this.kidFriendly = kidfriendly ?? false;
+    this.reserve = reserve ?? false;
+    this.accessability = accessability ?? accessability;
+    this.sanitary = sanitary ?? 'all';
+    this.waitTime = wait ?? 'all';
   },
 };
 </script>
