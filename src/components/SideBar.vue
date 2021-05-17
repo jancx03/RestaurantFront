@@ -8,6 +8,7 @@
                           rounded-lg dark-mode:text-white focus:outline-none focus:shadow-outline">
           Filters
         </a>
+        <button v-if="Object.keys(this.$route.query).length > 2" @click="clearFilter">Clear</button>
       </div>
       <nav :class="{ block: open, hidden: !open }"
         class="flex-grow md:block px-4 pb-4 md:pb-0 md:overflow-y-auto"
@@ -161,6 +162,15 @@ export default {
     },
     ratingMethod(rating) {
       return this.$router.push({ name: 'restaurants', query: { ...this.$route.query, rating } });
+    },
+    clearFilter() {
+      const { search, location } = this.$route.query;
+      this.kidFriendly = false;
+      this.reserve = false;
+      this.accessability = false;
+      this.sanitary = 'all';
+      this.waitTime = 'all';
+      return this.$router.push({ name: 'restaurants', query: { search, location } });
     },
   },
   mounted() {
