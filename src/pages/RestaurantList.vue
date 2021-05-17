@@ -14,7 +14,7 @@
         <Skeleton />
       </li>
     </ul>
-    <div class="flex ml-20 mt-44">
+    <div class="flex ml-20">
        <div id='map' class="map"></div>
     </div>
 
@@ -167,9 +167,8 @@ export default {
 }
 
 .map {
-
   width: 350px;
-  height: 500px;
+  height: 1000px;
 }
 
 .marker {
