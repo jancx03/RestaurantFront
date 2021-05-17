@@ -8,6 +8,7 @@
                           rounded-lg dark-mode:text-white focus:outline-none focus:shadow-outline">
           Filters
         </a>
+        <button v-if="Object.keys(this.$route.query).length > 2" @click="clearFilter">Clear</button>
       </div>
       <nav :class="{ block: open, hidden: !open }"
         class="flex-grow md:block px-4 pb-4 md:pb-0 md:overflow-y-auto"
@@ -122,37 +123,48 @@ export default {
       accessability: false,
       sanitary: 'all',
       waitTime: 'all',
+      isReseting: false,
     };
   },
   watch: {
     kidFriendly() {
       const kidfriendly = this.kidFriendly;
-      return this.$router.push({
-        name: 'restaurants',
-        query: { ...this.$route.query, kidfriendly },
-      });
+      return this.isReseting
+        ? 0
+        : this.$router.push({
+          name: 'restaurants',
+          query: { ...this.$route.query, kidfriendly },
+        });
     },
     reserve() {
       const { reserve } = this;
-      return this.$router.push({ name: 'restaurants', query: { ...this.$route.query, reserve } });
+      return this.isReseting
+        ? 0
+        : this.$router.push({ name: 'restaurants', query: { ...this.$route.query, reserve } });
     },
     accessability() {
-      const { accessability } = this;
-      return this.$router.push({
-        name: 'restaurants',
-        query: { ...this.$route.query, accessability },
-      });
-    },
-    paymentMethod() {
-      console.log(this.paymentMethod);
+      if (this.filterStatus) {
+        const { accessability } = this;
+        return this.isReseting
+          ? 0
+          : this.$router.push({
+            name: 'restaurants',
+            query: { ...this.$route.query, accessability },
+          });
+      }
+      return 0;
     },
     sanitary() {
       const { sanitary } = this;
-      return this.$router.push({ name: 'restaurants', query: { ...this.$route.query, sanitary } });
+      return this.isReseting
+        ? 0
+        : this.$router.push({ name: 'restaurants', query: { ...this.$route.query, sanitary } });
     },
     waitTime() {
       const wait = this.waitTime;
-      return this.$router.push({ name: 'restaurants', query: { ...this.$route.query, wait } });
+      return this.isReseting
+        ? 0
+        : this.$router.push({ name: 'restaurants', query: { ...this.$route.query, wait } });
     },
   },
   methods: {
@@ -161,6 +173,18 @@ export default {
     },
     ratingMethod(rating) {
       return this.$router.push({ name: 'restaurants', query: { ...this.$route.query, rating } });
+    },
+    clearFilter() {
+      this.isReseting = true;
+
+      this.kidFriendly = false;
+      this.reserve = false;
+      this.accessability = false;
+      this.sanitary = 'all';
+      this.waitTime = 'all';
+
+      const { search, location } = this.$route.query;
+      return this.$router.push({ name: 'restaurants', query: { search, location } });
     },
   },
   mounted() {
@@ -177,6 +201,9 @@ export default {
     this.accessability = accessability ?? accessability;
     this.sanitary = sanitary ?? 'all';
     this.waitTime = wait ?? 'all';
+  },
+  updated() {
+    return this.isReseting = false;
   },
 };
 </script>

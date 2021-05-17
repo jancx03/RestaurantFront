@@ -26,6 +26,7 @@
     <div class="info">
       <p>{{restaurant.address}}</p>
       <p>{{restaurant.contact}}</p>
+      <p class="distance">{{restaurant.distance}} miles</p>
     </div>
   </div>
 </template>
@@ -147,6 +148,12 @@ img {
 
 .feature {
   margin: 0 .7rem;
+  font-weight: 500;
+  font-size: 1rem;
+  color: black;
+}
+
+.distance {
   font-weight: 500;
   font-size: 1rem;
   color: black;
