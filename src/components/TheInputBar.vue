@@ -40,7 +40,7 @@ export default {
     return {
       item: '',
       search: '',
-      location: 'New York, NY',
+      location: 'New York 200 5th Ave',
     };
   },
   methods: {
