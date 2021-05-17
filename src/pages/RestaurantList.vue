@@ -14,7 +14,7 @@
         <Skeleton />
       </li>
     </ul>
-    <div class="flex ml-20 mt-44">
+    <div class="flex ml-20 mt-24">
        <div id='map' class="map"></div>
     </div>
 
