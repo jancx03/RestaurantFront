@@ -4,7 +4,7 @@ const namespaced = true;
 
 const state = () => ({
   restaurants: [],
-  restaurant: {},
+  notFound: false,
   error: null,
 });
 
@@ -12,16 +12,20 @@ const getters = {
   restaurants: (state) => state.restaurants,
   restaurant: (state) => state.restaurant,
   error: (state) => state.error,
+  notFound: (state) => state.notFound,
 };
 
 const mutations = {
   setRestaurants: (state, values) => state.restaurants = values,
   setRestaurant: (state, value) => state.restaurant = value,
   error: (state, value) => state.error = value,
+  notFound: (state, value) => state.notFound = value,
 };
 
 const actions = {
   queryRestaurants: async ({ commit }, payload) => new Promise((resolve, reject) => {
+    commit('notFound', false);
+    commit('restaurants', []);
     const request = async () => {
       const keys = Object.keys(payload);
       let params = '';
@@ -59,6 +63,7 @@ const actions = {
         const result = await json;
         commit('setRestaurants', result.data);
         commit('setCoordinates', result.coordinates, { root: true });
+        commit('notFound', !result.data.length);
         return resolve();
       } catch (err) {
         commit('error', err);

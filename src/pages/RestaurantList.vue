@@ -4,7 +4,10 @@
   </div>
   <div class="main">
     <TheSideBar />
-    <ul v-if="ready">
+    <div v-if="notFound">
+      <EmptyCard :term="$route.query.search" />
+    </div>
+    <ul v-else-if="ready">
       <li v-for="(restaurant, index) in restaurants" :key="restaurant.name">
         <RestaurantCard :restaurant="restaurant" :index="index + 1" />
       </li>
@@ -27,12 +30,13 @@ import Skeleton from 'components/Skeleton.vue';
 import TheSearchBar from 'components/TheInputBar.vue';
 import TheSideBar from 'components/SideBar.vue';
 import mapboxgl from 'mapbox-gl';
+import EmptyCard from 'components/EmptyCard.vue';
 
 import { mapGetters, mapActions } from 'vuex';
 
 export default {
   components: {
-    RestaurantCard, Skeleton, TheSearchBar, TheSideBar,
+    RestaurantCard, Skeleton, TheSearchBar, TheSideBar, EmptyCard,
   },
   watch: {
     $route() {
@@ -40,7 +44,7 @@ export default {
     },
   },
   computed: {
-    ...mapGetters('restaurantStore', ['restaurants']),
+    ...mapGetters('restaurantStore', ['restaurants', 'notFound']),
     ...mapGetters(['coordinates']),
     ready() {
       return !!this.restaurants.length;
@@ -132,7 +136,7 @@ export default {
         el.style.backgroundSize = '100%';
 
         el.addEventListener('click', () => {
-          window.alert('Hello World!');
+
         });
 
         // Add markers to the map.
