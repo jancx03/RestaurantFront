@@ -17,7 +17,9 @@
         <Skeleton />
       </li>
     </ul>
+
     <div class="flex ml-20">
+
        <div id='map' class="map"></div>
     </div>
 
